@@ -1,0 +1,266 @@
+/* BKEnhance - LMS rules toggled by classes on <html>.
+   content.js adds/removes these classes from the popup settings:
+     bke-hide-mycourses   hide the "My courses" navbar item
+     bke-cards            subject-card list layout
+     bke-dark             website dark mode (see dark-mode.css)            */
+
+
+/* ============================================================
+   NAVBAR: HIDE "MY COURSES"
+   ============================================================ */
+
+html.bke-hide-mycourses li[data-key="mycourses"] {
+    display: none !important;
+}
+
+
+/* ============================================================
+   SUBJECT CARD COLOURS
+   Light by default; dark values apply when dark mode is on.
+   ============================================================ */
+
+html.bke-cards {
+    --bke-card-bg: #ffffff;
+    --bke-card-bg-hover: #f3f5f8;
+    --bke-card-border: #dfe3e8;
+    --bke-card-border-hover: #c3cad4;
+    --bke-card-image-bg: #e9ecef;
+    --bke-card-placeholder: #7b8794;
+    --bke-card-name: #1f2933;
+    --bke-card-teacher: #5f6b7a;
+    --bke-card-code: #7b8794;
+}
+
+html.bke-cards.bke-dark {
+    --bke-card-bg: #202428;
+    --bke-card-bg-hover: #292e34;
+    --bke-card-border: #34383e;
+    --bke-card-border-hover: #4a5058;
+    --bke-card-image-bg: #000000;
+    --bke-card-placeholder: #252a30;
+    --bke-card-name: #f5f5f5;
+    --bke-card-teacher: #b5b7ba;
+    --bke-card-code: #92969b;
+}
+
+
+/* ============================================================
+   NXMT SUBJECT CARD
+   ============================================================ */
+
+.nxmt-subject-card {
+    position: relative;
+
+    width: 100%;
+    height: 170px;
+
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    padding: 10px;
+
+    background: var(--bke-card-bg);
+
+    border: 3px solid var(--bke-card-border);
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    box-shadow: none;
+
+    cursor: pointer;
+
+    text-decoration: none !important;
+
+    color: inherit !important;
+
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.nxmt-subject-card:hover {
+    background: var(--bke-card-bg-hover);
+
+    border-color: var(--bke-card-border-hover);
+
+    box-shadow: none;
+
+    transform: none;
+
+    text-decoration: none !important;
+}
+
+.nxmt-subject-card:focus,
+.nxmt-subject-card:active {
+    text-decoration: none !important;
+}
+
+
+/* ---------- Subject image ---------- */
+
+.nxmt-subject-image {
+    flex: 0 0 135px;
+
+    width: 135px;
+    height: 135px;
+
+    display: flex;
+
+    margin-right: 16px;
+
+    background: var(--bke-card-image-bg);
+
+    border: 2px solid var(--bke-card-border);
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    text-decoration: none !important;
+}
+
+.nxmt-subject-image:hover {
+    background: var(--bke-card-image-bg);
+
+    text-decoration: none !important;
+}
+
+.nxmt-subject-image-img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Placeholder if Moodle has no image */
+.nxmt-subject-image span {
+    color: var(--bke-card-placeholder);
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* ---------- Text ---------- */
+
+.nxmt-subject-info {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.nxmt-subject-name {
+    color: var(--bke-card-name);
+
+    font-size: 25px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    margin: 0;
+    padding: 0;
+}
+
+.nxmt-teacher-name {
+    color: var(--bke-card-teacher);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    margin-top: 9px;
+}
+
+.nxmt-subject-code {
+    position: absolute;
+
+    right: 18px;
+    bottom: 10px;
+
+    color: var(--bke-card-code);
+
+    font-size: 12px;
+    font-weight: 500;
+}
+
+
+/* ============================================================
+   REMOVE MOODLE'S OWN CARD CHROME/HOVER ON REPLACED CARDS
+   ============================================================ */
+
+html.bke-cards .course-card.nxmt-customized-card,
+html.bke-cards .course-card.nxmt-customized-card:hover,
+html.bke-cards .course-card.nxmt-customized-card:focus,
+html.bke-cards .course-card.nxmt-customized-card:active {
+    background: transparent !important;
+
+    border: none !important;
+
+    box-shadow: none !important;
+
+    transform: none !important;
+
+    cursor: default !important;
+}
+
+
+/* ============================================================
+   TURN MOODLE GRID INTO LIST
+   ============================================================ */
+
+html.bke-cards #page .block_myoverview .card-grid {
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+html.bke-cards #page .block_myoverview .card-grid > .col {
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    flex: none !important;
+
+    margin: 0 0 12px 0 !important;
+
+    padding: 0 !important;
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+    .nxmt-subject-card {
+        height: 140px;
+    }
+
+    .nxmt-subject-image {
+        flex-basis: 110px;
+
+        width: 110px;
+        height: 110px;
+    }
+
+    .nxmt-subject-name {
+        font-size: 20px;
+    }
+
+}

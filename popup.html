@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BKEnhance</title>
+  <script src="theme-init.js"></script>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <header>
+      <img src="icons/icon48.png" alt="BKEnhance">
+      <div>
+        <h1>BKEnhance</h1>
+        <p>HCMUT browser enhancements</p>
+      </div>
+    </header>
+
+    <section>
+      <label for="username">Username</label>
+      <input id="username" type="text" autocomplete="username" placeholder="HCMUT username">
+
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password" placeholder="Password">
+
+      <button id="save">Save credentials</button>
+      <div id="status" role="status"></div>
+    </section>
+
+    <section class="settings">
+      <h2>Navigation</h2>
+
+      <label class="toggle-row">
+        <span>
+          <strong>Auto redirect LMS</strong>
+          <small>Open My Courses when visiting the LMS homepage.</small>
+        </span>
+        <input id="autoRedirect" class="switch" type="checkbox" role="switch" data-label="Auto redirect">
+      </label>
+
+      <label class="toggle-row">
+        <span>
+          <strong>Hide My courses tab</strong>
+          <small>Remove the extra tab from the navbar. Home opens your courses instead.</small>
+        </span>
+        <input id="hideMyCourses" class="switch" type="checkbox" role="switch" data-label="Hide My courses">
+      </label>
+    </section>
+
+    <section class="settings">
+      <h2>Appearance</h2>
+
+      <label class="toggle-row">
+        <span>
+          <strong>Website dark mode</strong>
+          <small>Use the gray dark theme across the LMS.</small>
+        </span>
+        <input id="darkMode" class="switch" type="checkbox" role="switch" data-label="Website dark mode">
+      </label>
+
+      <label class="toggle-row">
+        <span>
+          <strong>Subject card list</strong>
+          <small>Show courses as a list of subject cards with teacher and code.</small>
+        </span>
+        <input id="subjectCards" class="switch" type="checkbox" role="switch" data-label="Subject card list">
+      </label>
+
+      <label class="toggle-row">
+        <span>
+          <strong>Dark popup</strong>
+          <small>Use a dark theme for this popup.</small>
+        </span>
+        <input id="popupDark" class="switch" type="checkbox" role="switch" data-label="Dark popup">
+      </label>
+    </section>
+
+    <footer>
+      Credentials are stored locally in Chrome extension storage.
+    </footer>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>
