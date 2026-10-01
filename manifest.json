@@ -3,7 +3,7 @@
   "name": "BKEnhance",
   "version": "2.1.1",
   "minimum_chrome_version": "120",
-  "description": "HCMUT browser enhancements: CAS auto-login, LMS redirect, navigation customization, course cards, and a modern gray dark theme. All LMS features can be toggled from the popup.",
+  "description": "HCMUT browser enhancements: Auto-login, LMS redirect, course cards, and a modern gray dark theme.",
   "permissions": [
     "storage"
   ],
