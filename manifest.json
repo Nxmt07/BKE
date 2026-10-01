@@ -45,6 +45,28 @@
         "content.js"
       ],
       "run_at": "document_start"
-    }
+    },
+    {
+      "matches": ["https://lms.hcmut.edu.vn/*"],
+      "css": ["dark-mode.css", "enhance.css", "codeformat.css"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://lms.hcmut.edu.vn/*"],
+      "js": ["codeformat.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://lms.hcmut.edu.vn/mod/quiz/attempt.php*"],
+      "js": ["showall.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://lms.hcmut.edu.vn/mod/quiz/attempt.php*"],
+      "js": ["page-bridge.js"],
+      "world": "MAIN",
+      "run_at": "document_idle"
+    }   
   ]
 }

@@ -264,3 +264,30 @@ html.bke-cards #page .block_myoverview .card-grid > .col {
     }
 
 }
+/* ============================================================
+   SHOW ALL QUESTIONS: keep each question as its own block
+   ============================================================ */
+
+form.bke-showall .que {
+    display: flow-root;          /* contains Moodle's floated .info column */
+    clear: both;
+    margin: 0 0 24px;
+    padding: 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+}
+
+html.bke-dark form.bke-showall .que {
+    border-color: #383d44;
+}
+/* Fallback look for answer boxes whose Ace editor did not start */
+form.bke-showall textarea.coderunner-answer {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+    font-size: 13px;
+    line-height: 18px;
+    tab-size: 4;
+    white-space: pre;
+    overflow: auto;
+}

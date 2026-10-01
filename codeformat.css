@@ -1,0 +1,123 @@
+/* BKEnhance - Ace-style code blocks in question prompts.
+   Toggled by html.bke-code-on (see codeformat.js).
+   The !important + #page selectors are needed to beat the broad
+   "#page .que span { color: ... !important }" rules in dark-mode.css. */
+
+/* ---------- Switching: show the formatted block, hide the original ---------- */
+
+.bke-code {
+  display: none;
+}
+
+html.bke-code-on #page .bke-code {
+  display: block;
+}
+
+html.bke-code-on #page pre.bke-src {
+  display: none !important;
+}
+
+/* ---------- Colours: light (Ace "TextMate") ---------- */
+
+.bke-code {
+  --bke-code-bg: #ffffff;
+  --bke-code-fg: #000000;
+  --bke-code-border: #cfcfcf;
+  --bke-code-gutter-bg: #ebebeb;
+  --bke-code-gutter-fg: #333333;
+  --bke-code-comment: #4c886b;
+  --bke-code-keyword: #0000ff;
+  --bke-code-type: #0000ff;
+  --bke-code-string: #036a07;
+  --bke-code-number: #0000cd;
+  --bke-code-const: #585cf6;
+  --bke-code-func: #3c4c72;
+  --bke-code-preproc: #6d79de;
+}
+
+/* ---------- Colours: dark (matches dark-mode.css Ace palette) ---------- */
+
+html.bke-dark .bke-code {
+  --bke-code-bg: #17191c;
+  --bke-code-fg: #d9dee4;
+  --bke-code-border: #4a5058;
+  --bke-code-gutter-bg: #202327;
+  --bke-code-gutter-fg: #a1a8b1;
+  --bke-code-comment: #7d8c7d;
+  --bke-code-keyword: #c792ea;
+  --bke-code-type: #d7a8f5;
+  --bke-code-string: #a9d8ad;
+  --bke-code-number: #f2b56b;
+  --bke-code-const: #f2b56b;
+  --bke-code-func: #91b8ff;
+  --bke-code-preproc: #c792ea;
+}
+
+/* ---------- Box ---------- */
+
+#page .que .bke-code {
+  counter-reset: bke-ln;
+  box-sizing: border-box;
+  margin: 0 0 10px;
+  padding: 4px 0;
+  overflow-x: auto;
+  background-color: var(--bke-code-bg) !important;
+  border: 1px solid var(--bke-code-border) !important;
+  border-radius: 3px;
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace !important;
+  font-size: 13px !important;
+  line-height: 18px !important;
+  tab-size: 4;
+  white-space: pre;
+}
+
+/* ---------- Lines + gutter ---------- */
+
+#page .que .bke-code .bke-line {
+  display: block;
+  counter-increment: bke-ln;
+  min-width: max-content;
+  padding-right: 12px;
+  background: transparent !important;
+  color: var(--bke-code-fg) !important;
+  white-space: pre;
+}
+
+#page .que .bke-code .bke-line::before {
+  content: counter(bke-ln);
+  display: inline-block;
+  position: sticky;
+  left: 0;
+  box-sizing: border-box;
+  width: 42px;
+  margin-right: 10px;
+  padding-right: 8px;
+  text-align: right;
+  background: var(--bke-code-gutter-bg);
+  color: var(--bke-code-gutter-fg);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Keeps empty lines at full height */
+#page .que .bke-code .bke-line::after {
+  content: "\200b";
+}
+
+/* ---------- Tokens ---------- */
+
+#page .que .bke-code .bke-tok-comment {
+  color: var(--bke-code-comment) !important;
+  font-style: italic;
+}
+#page .que .bke-code .bke-tok-keyword  { color: var(--bke-code-keyword) !important; }
+#page .que .bke-code .bke-tok-type     { color: var(--bke-code-type) !important; }
+#page .que .bke-code .bke-tok-string   { color: var(--bke-code-string) !important; }
+#page .que .bke-code .bke-tok-number   { color: var(--bke-code-number) !important; }
+#page .que .bke-code .bke-tok-const    { color: var(--bke-code-const) !important; }
+#page .que .bke-code .bke-tok-func     { color: var(--bke-code-func) !important; }
+#page .que .bke-code .bke-tok-preproc  { color: var(--bke-code-preproc) !important; }
+
+#page .que .bke-code span {
+  background: transparent !important;
+}

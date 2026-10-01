@@ -8,11 +8,13 @@
     hideMyCourses: true,
     darkMode: true,
     subjectCards: true,
+    codeFormat: true,
+    showAllQuestions: false,
     popupDark: null // null = follow the system theme until the user picks one
   };
 
   // Switches that simply save their checked state under their own id.
-  const TOGGLE_IDS = ["autoRedirect", "hideMyCourses", "darkMode", "subjectCards"];
+  const TOGGLE_IDS = ["autoRedirect", "hideMyCourses", "darkMode", "subjectCards", "codeFormat", "showAllQuestions"];
 
   const username = document.getElementById("username");
   const password = document.getElementById("password");
