@@ -17,41 +17,51 @@ html.bke-code-on #page pre.bke-src {
   display: none !important;
 }
 
-/* ---------- Colours: light (Ace "TextMate") ---------- */
-
-.bke-code {
+/* VS Code Light+ */
+.bke-code,
+.ace_editor.ace-tm {
   --bke-code-bg: #ffffff;
   --bke-code-fg: #000000;
-  --bke-code-border: #cfcfcf;
-  --bke-code-gutter-bg: #ebebeb;
-  --bke-code-gutter-fg: #333333;
-  --bke-code-comment: #4c886b;
+  --bke-code-border: #d4d4d4;
+  --bke-code-gutter-bg: #ffffff;
+  --bke-code-gutter-fg: #237893;
+  --bke-code-gutter-active: #0b216f;
+  --bke-code-line-hl: #f3f3f3;
+  --bke-code-select: #add6ff;
+  --bke-code-cursor: #000000;
+  --bke-code-comment: #008000;
   --bke-code-keyword: #0000ff;
+  --bke-code-control: #af00db;
   --bke-code-type: #0000ff;
-  --bke-code-string: #036a07;
-  --bke-code-number: #0000cd;
-  --bke-code-const: #585cf6;
-  --bke-code-func: #3c4c72;
-  --bke-code-preproc: #6d79de;
+  --bke-code-string: #a31515;
+  --bke-code-number: #098658;
+  --bke-code-const: #0000ff;
+  --bke-code-func: #795e26;
+  --bke-code-preproc: #af00db;
 }
 
-/* ---------- Colours: dark (matches dark-mode.css Ace palette) ---------- */
-
-html.bke-dark .bke-code {
-  --bke-code-bg: #17191c;
-  --bke-code-fg: #d9dee4;
-  --bke-code-border: #4a5058;
-  --bke-code-gutter-bg: #202327;
-  --bke-code-gutter-fg: #a1a8b1;
-  --bke-code-comment: #7d8c7d;
-  --bke-code-keyword: #c792ea;
-  --bke-code-type: #d7a8f5;
-  --bke-code-string: #a9d8ad;
-  --bke-code-number: #f2b56b;
-  --bke-code-const: #f2b56b;
-  --bke-code-func: #91b8ff;
-  --bke-code-preproc: #c792ea;
-}
+/* VS Code Dark+ */
+html.bke-dark .bke-code,
+html.bke-dark .ace_editor.ace-tm {
+  --bke-code-bg: #1e1e1e;
+  --bke-code-fg: #d4d4d4;
+  --bke-code-border: #3c3c3c;
+  --bke-code-gutter-bg: #1e1e1e;
+  --bke-code-gutter-fg: #858585;
+  --bke-code-gutter-active: #c6c6c6;
+  --bke-code-line-hl: #2a2d2e;
+  --bke-code-select: #264f78;
+  --bke-code-cursor: #aeafad;
+  --bke-code-comment: #6a9955;
+  --bke-code-keyword: #569cd6;
+  --bke-code-control: #c586c0;
+  --bke-code-type: #569cd6;
+  --bke-code-string: #ce9178;
+  --bke-code-number: #b5cea8;
+  --bke-code-const: #569cd6;
+  --bke-code-func: #dcdcaa;
+  --bke-code-preproc: #c586c0;
+} 
 
 /* ---------- Box ---------- */
 
@@ -64,9 +74,9 @@ html.bke-dark .bke-code {
   background-color: var(--bke-code-bg) !important;
   border: 1px solid var(--bke-code-border) !important;
   border-radius: 3px;
-  font-family: Monaco, Menlo, Consolas, "Courier New", monospace !important;
-  font-size: 13px !important;
-  line-height: 18px !important;
+    font-family: Consolas, "Courier New", monospace !important;
+  font-size: 14px !important;
+  line-height: 19px !important;
   tab-size: 4;
   white-space: pre;
 }
@@ -120,4 +130,113 @@ html.bke-dark .bke-code {
 
 #page .que .bke-code span {
   background: transparent !important;
+}
+/* ============================================================
+   ACE ANSWER EDITOR: VS Code look
+   Gated by html.bke-code-on, so the "Format code" switch
+   controls it.
+   ============================================================ */
+
+html.bke-code-on #page .ui_wrapper {
+  border: 1px solid var(--bke-code-border) !important;
+  border-radius: 0;
+  background-color: var(--bke-code-bg) !important;
+}
+
+html.bke-code-on #page .ace_editor.ace-tm,
+html.bke-code-on #page .ace_editor.ace-tm .ace_scroller,
+html.bke-code-on #page .ace_editor.ace-tm .ace_content {
+  background-color: var(--bke-code-bg) !important;
+  color: var(--bke-code-fg) !important;
+}
+
+html.bke-code-on #page .ace_editor.ace-tm {
+  font-family: Consolas, "Courier New", monospace !important;
+  font-size: 14px !important;
+  line-height: 19px !important;
+}
+
+/* Gutter: same background as the editor, dim numbers, bright active one */
+html.bke-code-on #page .ace_editor.ace-tm .ace_gutter {
+  background: var(--bke-code-gutter-bg) !important;
+  color: var(--bke-code-gutter-fg) !important;
+  border: 0 !important;
+}
+html.bke-code-on #page .ace_editor.ace-tm .ace_gutter-active-line {
+  background-color: transparent !important;
+  color: var(--bke-code-gutter-active) !important;
+}
+html.bke-code-on #page .ace_editor.ace-tm .ace_gutter-layer .ace_gutter-cell {
+  padding-left: 12px;
+}
+
+/* Current line, selection, cursor, brackets, guides */
+html.bke-code-on #page .ace_editor.ace-tm .ace_marker-layer .ace_active-line {
+  background-color: var(--bke-code-line-hl) !important;
+}
+html.bke-code-on #page .ace_editor.ace-tm .ace_marker-layer .ace_selection {
+  background: var(--bke-code-select) !important;
+}
+html.bke-code-on #page .ace_editor.ace-tm .ace_marker-layer .ace_selected-word {
+  background: transparent !important;
+  border: 1px solid var(--bke-code-select) !important;
+}
+html.bke-code-on #page .ace_editor.ace-tm .ace_marker-layer .ace_bracket {
+  margin: -1px 0 0 -1px;
+  background: transparent !important;
+  border: 1px solid var(--bke-code-gutter-fg) !important;
+}
+html.bke-code-on #page .ace_editor.ace-tm .ace_cursor {
+  color: var(--bke-code-cursor) !important;
+}
+html.bke-code-on #page .ace_editor.ace-tm .ace_print-margin {
+  background: transparent !important;
+  width: 0 !important;
+}
+html.bke-code-on #page .ace_editor.ace-tm .ace_indent-guide {
+  filter: none !important;
+  opacity: 0.35;
+}
+
+/* Plain text */
+html.bke-code-on #page .ace_editor.ace-tm .ace_identifier,
+html.bke-code-on #page .ace_editor.ace-tm .ace_paren,
+html.bke-code-on #page .ace_editor.ace-tm .ace_punctuation,
+html.bke-code-on #page .ace_editor.ace-tm .ace_keyword.ace_operator {
+  color: var(--bke-code-fg) !important;
+}
+
+/* Tokens */
+html.bke-code-on #page .ace_editor.ace-tm .ace_comment {
+  color: var(--bke-code-comment) !important;
+  font-style: normal;
+}
+html.bke-code-on #page .ace_editor.ace-tm .ace_keyword,
+html.bke-code-on #page .ace_editor.ace-tm .ace_storage {
+  color: var(--bke-code-keyword) !important;
+}
+/* if / for / return / while ... are purple in VS Code */
+html.bke-code-on #page .ace_editor.ace-tm .ace_keyword.ace_control {
+  color: var(--bke-code-control) !important;
+}
+html.bke-code-on #page .ace_editor.ace-tm .ace_storage.ace_type {
+  color: var(--bke-code-type) !important;
+}
+html.bke-code-on #page .ace_editor.ace-tm .ace_string {
+  color: var(--bke-code-string) !important;
+}
+html.bke-code-on #page .ace_editor.ace-tm .ace_constant.ace_numeric {
+  color: var(--bke-code-number) !important;
+}
+html.bke-code-on #page .ace_editor.ace-tm .ace_constant.ace_language,
+html.bke-code-on #page .ace_editor.ace-tm .ace_variable.ace_language {
+  color: var(--bke-code-const) !important;
+}
+html.bke-code-on #page .ace_editor.ace-tm .ace_support.ace_function,
+html.bke-code-on #page .ace_editor.ace-tm .ace_entity.ace_name.ace_function {
+  color: var(--bke-code-func) !important;
+}
+html.bke-code-on #page .ace_editor.ace-tm .ace_keyword.ace_control.ace_directive,
+html.bke-code-on #page .ace_editor.ace-tm .ace_meta.ace_preprocessor {
+  color: var(--bke-code-preproc) !important;
 }
